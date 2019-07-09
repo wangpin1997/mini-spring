@@ -10,6 +10,6 @@ public class ResourceLoader {
 
     public Resource getResource(String config){
         URL url=this.getClass().getClassLoader().getResource(config);
-        return new URLResource(url);
+        return new UrlResource(url);
     }
 }

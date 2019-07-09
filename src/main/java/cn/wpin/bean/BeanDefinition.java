@@ -19,6 +19,14 @@ public class BeanDefinition {
 
     private PropertyValues propertyValues;
 
+    public PropertyValues getPropertyValues() {
+        return propertyValues;
+    }
+
+    public void setPropertyValues(PropertyValues propertyValues) {
+        this.propertyValues = propertyValues;
+    }
+
     public void setBeanClassName(String beanClassName) {
         this.beanClassName = beanClassName;
         try {

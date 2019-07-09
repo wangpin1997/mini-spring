@@ -20,5 +20,5 @@ public interface BeanPostProcessor {
      * @param beanName
      * @return
      */
-    Object postProcessAfterInitialization(Object bean,String beanName);
+    Object postProcessAfterInitialization(Object bean,String beanName) throws Exception;
 }

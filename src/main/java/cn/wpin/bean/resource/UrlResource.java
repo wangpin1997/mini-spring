@@ -9,11 +9,11 @@ import java.net.URLConnection;
  * 资源处理，主要是解析xml
  * @author wangpin
  */
-public class URLResource implements Resource {
+public class UrlResource implements Resource {
 
     private final URL url;
 
-    public URLResource(URL url) {
+    public UrlResource(URL url) {
         this.url = url;
     }
 

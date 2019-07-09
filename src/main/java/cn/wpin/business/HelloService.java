@@ -2,5 +2,5 @@ package cn.wpin.business;
 
 public interface HelloService {
 
-    void hello();
+    void hello() throws InterruptedException;
 }

@@ -53,7 +53,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
 
     }
 
-    protected Object initializeBean(Object bean,String name){
+    protected Object initializeBean(Object bean,String name) throws Exception {
         //分别进行前置和后置增强
         for (BeanPostProcessor processor : beanPostProcessors) {
             bean = processor.postProcessBeforeInitialization(bean, name);
@@ -67,7 +67,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
     }
 
 
-    public  List getBeansForType(Class<BeanPostProcessor> type) throws Exception {
+    public  List getBeansForType(Class<?> type) throws Exception {
         List beans = new ArrayList<Object>();
         for (String beanDefinitionName : beanDefinitionNames) {
             if (type.isAssignableFrom(beanDefinitionMap.get(beanDefinitionName).getBeanClass())) {
