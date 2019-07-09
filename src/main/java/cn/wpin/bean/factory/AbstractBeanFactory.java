@@ -5,10 +5,14 @@ import cn.wpin.bean.BeanPostProcessor;
 import cn.wpin.exception.NoSuchBeanDefinitionException;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+/**
+ * @author wangpin
+ */
 public abstract class AbstractBeanFactory implements BeanFactory {
 
     /**
@@ -26,7 +30,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
             throw new NoSuchBeanDefinitionException(beanDefinition.getBeanClassName());
         }
         Object bean=beanDefinition.getBean();
-        if (bean!=null){
+        if (bean==null){
             bean =doCreateBean(beanDefinition);
             bean=initializeBean(bean,beanName);
             beanDefinition.setBean(bean);
@@ -63,5 +67,29 @@ public abstract class AbstractBeanFactory implements BeanFactory {
     }
 
 
+    public  List getBeansForType(Class<BeanPostProcessor> type) throws Exception {
+        List beans = new ArrayList<Object>();
+        for (String beanDefinitionName : beanDefinitionNames) {
+            if (type.isAssignableFrom(beanDefinitionMap.get(beanDefinitionName).getBeanClass())) {
+                beans.add(getBean(beanDefinitionName));
+            }
+        }
+        return beans;
+    }
 
+    public  void addBeanPostProcessor(BeanPostProcessor beanPostProcessor){
+        this.beanPostProcessors.add(beanPostProcessor);
+    }
+
+    public void preInstantiateSingletons() throws Exception {
+        for (Iterator it = this.beanDefinitionNames.iterator(); it.hasNext();) {
+            String beanName = (String) it.next();
+            getBean(beanName);
+        }
+    }
+
+    public void registerBeanDefinition(String name, BeanDefinition beanDefinition) throws Exception {
+        beanDefinitionMap.put(name, beanDefinition);
+        beanDefinitionNames.add(name);
+    }
 }
