@@ -8,15 +8,15 @@ import cn.wpin.context.ClassPathXmlApplicationContext;
 import org.junit.Test;
 
 /**
- * jdk动态代理测试类
+ * cglib代理测试类
  */
-public class JdkDynamicAopProxyTest {
+public class CglibAopProxyTest {
 
     @Test
-    public void main() throws Exception {
+    public  void main() throws Exception {
         ApplicationContext context=new ClassPathXmlApplicationContext("spring.xml");
         HelloService service= (HelloService) context.getBean("helloService");
-        service.hello();
+//        service.hello();
 
         //设置被代理对象（切入点）
         AdvisedSupport advisedSupport=new AdvisedSupport();
@@ -27,13 +27,13 @@ public class JdkDynamicAopProxyTest {
         TimeInterceptor timeInterceptor=new TimeInterceptor();
         advisedSupport.setMethodInterceptor(timeInterceptor);
 
-        //创建代理
-        JdkDynamicAopProxy jdkDynamicAopProxy=new JdkDynamicAopProxy(advisedSupport);
-        HelloService helloService= (HelloService) jdkDynamicAopProxy.getProxy();
-        OrderService orderService= (OrderService) jdkDynamicAopProxy.getProxy();
+        //创建代理 cglib
+        CglibAopProxy cglibAopProxy=new CglibAopProxy(advisedSupport);
+        HelloService helloService= (HelloService) cglibAopProxy.getProxy();
+        OrderService orderService= (OrderService) cglibAopProxy.getProxy();
 
         //调用生成代理类，运行方法
-        helloService.hello();
-//        orderService.print();
+//        helloService.hello();
+        orderService.print();
     }
 }

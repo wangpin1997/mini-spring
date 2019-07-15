@@ -1,15 +1,15 @@
 package cn.wpin.aop;
 
-import net.sf.cglib.proxy.Callback;
 import net.sf.cglib.proxy.Enhancer;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
-import org.aopalliance.intercept.MethodInvocation;
 
 import java.lang.reflect.Method;
 
+/**
+ * @author wangpin
+ */
 public class CglibAopProxy extends AbstractAopProxy {
-
 
     public CglibAopProxy(AdvisedSupport advisedSupport) {
         super(advisedSupport);
@@ -17,7 +17,7 @@ public class CglibAopProxy extends AbstractAopProxy {
 
     public Object getProxy() {
         Enhancer enhancer=new Enhancer();
-        enhancer.setSuperclass(advisedSupport.getTargetSource().getClass());
+        enhancer.setSuperclass(advisedSupport.getTargetSource().getTargetClass());
         enhancer.setInterfaces(advisedSupport.getTargetSource().getInterfaces());
         enhancer.setCallback(new DynamicAdvisedInterceptor(advisedSupport));
         Object o=enhancer.create();

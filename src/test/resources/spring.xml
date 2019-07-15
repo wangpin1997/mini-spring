@@ -9,8 +9,11 @@
 	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
     <bean id="helloService" name="helloService" class="cn.wpin.business.HelloServiceImpl">
-        <property name="text" value="Hello World!"></property>
+        <property name="text" value="Hello World! 1234565"></property>
+        <property name="orderService" ref="orderService"></property>
     </bean>
+
+    <bean id="orderService" name="orderService" class="cn.wpin.business.OrderServiceImpl"></bean>
 
     <bean id="autoProxyCreator" class="cn.wpin.aop.aspect.AspectJAwareAdvisorAutoProxyCreator">
 
@@ -20,7 +23,7 @@
 
     <bean id="aspectjAspect" class="cn.wpin.aop.aspect.AspectJExpressionPointcutAdvisor">
         <property name="advice" ref="timeInterceptor"></property>
-        <property name="expression" value="execution(* cn.wpin.*.*(..))"></property>
+        <property name="expression" value="execution(* cn.wpin.*.**.*(..))"></property>
     </bean>
 
 </beans>
