@@ -2,7 +2,9 @@ package cn.wpin.bean.factory;
 
 import cn.wpin.bean.BeanDefinition;
 import cn.wpin.bean.BeanPostProcessor;
+import cn.wpin.business.HelloServiceImpl;
 import cn.wpin.exception.NoSuchBeanDefinitionException;
+import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 import java.util.Iterator;

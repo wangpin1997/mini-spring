@@ -10,6 +10,9 @@ import org.aopalliance.intercept.MethodInterceptor;
 
 import java.util.List;
 
+/**
+ * @author wangpin
+ */
 public class AspectJAwareAdvisorAutoProxyCreator implements BeanFactoryAware, BeanPostProcessor {
 
     private AbstractBeanFactory beanFactory;

@@ -18,6 +18,7 @@ public interface BeanPostProcessor {
      * 初始化之后执行
      * @param bean
      * @param beanName
+     * @throws Exception
      * @return
      */
     Object postProcessAfterInitialization(Object bean,String beanName) throws Exception;

@@ -25,7 +25,6 @@ public class AutowireCapableBeanFactory extends AbstractBeanFactory {
                 BeanReference beanReference = (BeanReference) value;
                 value = getBean(beanReference.getName());
             }
-
             try {
                 Method declaredMethod = bean.getClass().getDeclaredMethod(
                         "set" + propertyValue.getName().substring(0, 1).toUpperCase()

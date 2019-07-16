@@ -3,7 +3,6 @@ package cn.wpin.context;
 import cn.wpin.bean.BeanPostProcessor;
 import cn.wpin.bean.factory.AbstractBeanFactory;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,8 +17,11 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
     }
 
     public void refresh() throws Exception {
+        //先加载默认自动装配的bean
         loadBeanDefinitions(beanFactory);
+        //再注册bean
         registerBeanPostProcessors(beanFactory);
+        //准备工作，记录下容器的启动时间、标记“已启动”状态、处理配置文件中的占位符
         onRefresh();
     }
 
