@@ -16,6 +16,9 @@ public abstract class AbstractApplicationContext implements ApplicationContext {
         this.beanFactory = beanFactory;
     }
 
+    protected AbstractApplicationContext() {
+    }
+
     public void refresh() throws Exception {
         //先加载默认自动装配的bean
         loadBeanDefinitions(beanFactory);
