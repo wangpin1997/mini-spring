@@ -1,5 +1,8 @@
 package cn.wpin.business;
 
+import cn.wpin.bean.annotation.Component;
+
+@Component
 public class HelloServiceImpl implements HelloService,OrderService {
 
     private String text;
@@ -12,7 +15,7 @@ public class HelloServiceImpl implements HelloService,OrderService {
 
     public void hello() throws InterruptedException {
         System.out.println("hello world");
-        orderService.print();
+//        orderService.print();
     }
 
     public void print() {

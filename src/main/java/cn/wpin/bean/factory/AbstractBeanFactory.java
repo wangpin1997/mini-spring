@@ -2,14 +2,9 @@ package cn.wpin.bean.factory;
 
 import cn.wpin.bean.BeanDefinition;
 import cn.wpin.bean.BeanPostProcessor;
-import cn.wpin.business.HelloServiceImpl;
 import cn.wpin.exception.NoSuchBeanDefinitionException;
-import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
@@ -22,7 +17,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
      */
     private Map<String, BeanDefinition> beanDefinitionMap=new ConcurrentHashMap<String, BeanDefinition>(256);
 
-    private final List<String> beanDefinitionNames = new ArrayList<String>();
+    private final Set<String> beanDefinitionNames = new HashSet<String>();
 
     private List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
 
@@ -38,6 +33,10 @@ public abstract class AbstractBeanFactory implements BeanFactory {
             beanDefinition.setBean(bean);
         }
         return bean;
+    }
+
+    public int getBeanCount(){
+        return this.beanDefinitionMap.size();
     }
 
     protected Object doCreateBean(BeanDefinition beanDefinition) throws Exception {
