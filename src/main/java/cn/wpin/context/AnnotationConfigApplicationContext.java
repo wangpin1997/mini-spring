@@ -1,8 +1,12 @@
 package cn.wpin.context;
 
+import cn.wpin.bean.BeanDefinition;
 import cn.wpin.bean.annotation.AnnotatedBeanDefinitionReader;
 import cn.wpin.bean.factory.AbstractBeanFactory;
+import cn.wpin.bean.factory.AutowireCapableBeanFactory;
 import cn.wpin.bean.resource.ResourceLoader;
+
+import java.util.Map;
 
 /**
  * 基于注解的配置
@@ -19,13 +23,17 @@ public class AnnotationConfigApplicationContext extends AbstractApplicationConte
     }
 
     public AnnotationConfigApplicationContext(){
+        super(new AutowireCapableBeanFactory());
         this.reader=new AnnotatedBeanDefinitionReader(new ResourceLoader());
+
 
     }
 
     @Override
-    protected void loadBeanDefinitions(AbstractBeanFactory factory){
-
+    protected void loadBeanDefinitions(AbstractBeanFactory factory) throws Exception {
+        for (Map.Entry<String, BeanDefinition> beanDefinitionEntry : reader.getRegistry().entrySet()) {
+            beanFactory.registerBeanDefinition(beanDefinitionEntry.getKey(), beanDefinitionEntry.getValue());
+        }
     }
 
     public void register(Class<?>... annotatedClasses) {

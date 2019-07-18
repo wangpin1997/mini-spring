@@ -40,8 +40,8 @@ public class AnnotatedBeanDefinitionReader extends AbstractBeanDefinitionReader 
                     e.printStackTrace();
                 }
                 definition.setBeanClass(annotatedClass);
-                String className=annotatedClass.getName();
-                definition.setBeanClassName(className);
+                String className=annotatedClass.getName().substring(annotatedClass.getName().lastIndexOf(".")+1);
+                definition.setBeanClassName(annotatedClass.getName());
                 getRegistry().put(className,definition);
             }
         }
