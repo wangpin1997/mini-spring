@@ -46,7 +46,7 @@ public abstract class AbstractBeanDefinitionReader implements BeanDefinitionRead
                     e.printStackTrace();
                 }
                 definition.setBeanClass(annotatedClass);
-                String className=annotatedClass.getName().substring(annotatedClass.getName().lastIndexOf(".")+1);
+                String className=annotatedClass.getSimpleName();
                 definition.setBeanClassName(annotatedClass.getName());
                 getRegistry().put(className,definition);
             }

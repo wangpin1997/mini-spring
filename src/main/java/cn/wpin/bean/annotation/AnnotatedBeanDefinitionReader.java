@@ -25,6 +25,7 @@ public class AnnotatedBeanDefinitionReader extends AbstractBeanDefinitionReader 
 
 
 
+    @Override
     public void loadBeanDefinitions(String config) throws Exception {
 
     }

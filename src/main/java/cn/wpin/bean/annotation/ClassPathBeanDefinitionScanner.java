@@ -26,6 +26,7 @@ public class ClassPathBeanDefinitionScanner extends AbstractBeanDefinitionReader
         }
     }
 
+    @Override
     public void loadBeanDefinitions(String config) throws Exception {
 
     }

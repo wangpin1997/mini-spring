@@ -5,7 +5,6 @@ import cn.wpin.bean.annotation.AnnotatedBeanDefinitionReader;
 import cn.wpin.bean.annotation.ClassPathBeanDefinitionScanner;
 import cn.wpin.bean.factory.AbstractBeanFactory;
 import cn.wpin.bean.factory.AutowireCapableBeanFactory;
-import cn.wpin.bean.resource.Resource;
 import cn.wpin.bean.resource.ResourceLoader;
 
 import java.util.Map;

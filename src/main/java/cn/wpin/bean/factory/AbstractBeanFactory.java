@@ -21,6 +21,7 @@ public abstract class AbstractBeanFactory implements BeanFactory {
 
     private List<BeanPostProcessor> beanPostProcessors = new ArrayList<BeanPostProcessor>();
 
+    @Override
     public Object getBean(String beanName) throws Exception {
         BeanDefinition beanDefinition=beanDefinitionMap.get(beanName);
         if (beanDefinition==null){

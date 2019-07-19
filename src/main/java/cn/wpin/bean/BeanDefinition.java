@@ -23,10 +23,6 @@ public class BeanDefinition {
         return propertyValues;
     }
 
-    public void setPropertyValues(PropertyValues propertyValues) {
-        this.propertyValues = propertyValues;
-    }
-
     public void setBeanClassName(String beanClassName) {
         this.beanClassName = beanClassName;
         try {
